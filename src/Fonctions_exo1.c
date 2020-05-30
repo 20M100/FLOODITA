@@ -10,7 +10,7 @@ void trouve_zone_rec(int **M, int nbcase, int i, int j, int *taille, ListeCase *
 
     // On ré-exécute la fonction pour toute case adjacente à (i,j) et de même couleur 
 
-    if (j < nbcase && tmp == M[i][j+1]) {
+    if (j < nbcase -1 && tmp == M[i][j+1]) {
         trouve_zone_rec(M, nbcase, i, j+1, taille, L);
     }
 
@@ -18,7 +18,7 @@ void trouve_zone_rec(int **M, int nbcase, int i, int j, int *taille, ListeCase *
         trouve_zone_rec(M, nbcase, i, j-1, taille, L);
     }
 
-    if (i < nbcase && tmp == M[i+1][j]) {
+    if (i < nbcase -1 && tmp == M[i+1][j]) {
         trouve_zone_rec(M, nbcase, i+1, j, taille, L);
     }
 
@@ -43,6 +43,8 @@ int sequence_aleatoire_rec(int **M, Grille *G, int dim, int nbcl, int aff){
     trouve_zone_rec(M, dim, 0, 0, &t, &L);                                // On calcule la taille de la Zsg et on affecte ses cases  dans L
 
     while (t < dim*dim) {                                                // Tant que la Zsg ne remplit pas la grille, on affecte une nouvelle couleur
+
+
         t = 0;
         TMP = L;
         c=rand()%(nbcl);
@@ -65,7 +67,6 @@ int sequence_aleatoire_rec(int **M, Grille *G, int dim, int nbcl, int aff){
         if (aff == 1) {                                                  // On réaffiche la grille après modif. si demandé
             Grille_redessine_Grille(G);
             Grille_attente_touche(G);
-            Grille_ferme_fenetre();
         }
 
         L = TMP;
