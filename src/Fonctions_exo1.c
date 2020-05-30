@@ -38,7 +38,7 @@ int sequence_aleatoire_rec(int **M, Grille *G, int dim, int nbcl, int aff){
     int c;                                                               // Numéro de la nouvelle couleur attribuée 
     int tmp;
     ListeCase L;
-    ListeCase TMP;
+    ListeCase it;
     init_liste(&L);
     trouve_zone_rec(M, dim, 0, 0, &t, &L);                                // On calcule la taille de la Zsg et on affecte ses cases  dans L
 
@@ -46,21 +46,21 @@ int sequence_aleatoire_rec(int **M, Grille *G, int dim, int nbcl, int aff){
 
 
         t = 0;
-        TMP = L;
         c=rand()%(nbcl);
         tmp = M[0][0];
 
+        it = L;
         if (c != tmp) {
-            cpt++;                                                       // On augmente cpt si la nouvelle couleur est différente de celle de la Zsg 
-            while (L != NULL) {
-                Grille_attribue_couleur_case(G, L->i, L->j, c);    // On change la couleur des cases de la Zsg si nécessaire
-                M[L->i][L->j] = c;                                 // On met à jour la matrice de la grille 
-                L = L->suiv;
+            cpt++;                                                       // On augmente cpt si la nouvelle couleur est différente de celle de la Zsg
+            while (it != NULL) {
+                Grille_attribue_couleur_case(G, it->i, it->j, c);    // On change la couleur des cases de la Zsg si nécessaire
+                M[it->i][it->j] = c;                                 // On met à jour la matrice de la grille
+                it = it->suiv;
             }
         } else {
-            while (L != NULL) {
-                M[L->i][L->j] = c;
-                L =L->suiv;
+            while (it != NULL) {
+                M[it->i][it->j] = c;
+                it = it->suiv;
             }
         }
 
@@ -69,7 +69,6 @@ int sequence_aleatoire_rec(int **M, Grille *G, int dim, int nbcl, int aff){
             Grille_attente_touche(G);
         }
 
-        L = TMP;
         detruit_liste(&L);                                                // On détruit la liste contenant l'ancienne Zsg
         trouve_zone_rec(M, dim, 0, 0, &t, &L);                            // On ré-exécute trouve_zone_rec avec la nouvelle matrice
     }
