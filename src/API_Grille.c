@@ -107,7 +107,7 @@ void Grille_attente_touche(Grille *G) {
                     // A key has been pressed.
                     break;
                 case SDL_KEYDOWN:
-                    stop = 0;
+                    //stop = 0;
                     break;
             }
         }
