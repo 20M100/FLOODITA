@@ -48,6 +48,7 @@ int main(int argc, char **argv) {
     Gene_instance_genere_matrice(dim, nbcl, nivdif, graine, M);
 
 
+
     if (aff == 1) { /* Affichage de la grille */
         Grille_init(dim, nbcl, 500, &G);
 
@@ -68,7 +69,6 @@ int main(int argc, char **argv) {
     if (exo == 0) {
         printf("%d essais", sequence_aleatoire_rec(M, G, dim, nbcl, aff));
     }
-
 
     temps_final = clock();
     temps_cpu = (temps_final - temps_initial) * 1e-6;

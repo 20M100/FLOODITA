@@ -92,23 +92,23 @@ void Grille_redessine_Grille(Grille *G) {
 }
 
 void Grille_attente_touche(Grille *G) {
-    SDL_UpdateWindowSurface(G->window);
-    SDL_Event event;
-    int stop = 1;
 
-    while (stop) {
+    SDL_Event event;
+    int stop = 0;
+
+    while (!stop) {
         // Poll system for an event.
         if (SDL_PollEvent(&event)) {
             switch (event.type) {
                 // If the window has been closed, then stop the loop.
                 case SDL_QUIT:
-                    stop = 0;
-
-                    // A key has been pressed.
-                    break;
+                    stop = 1;
+                    printf("Exit requested\n");
+                    exit(3);
                 case SDL_KEYDOWN:
-                    //stop = 0;
-                    break;
+                    if(event.key.keysym.sym == SDLK_c) {
+                        stop = 1;
+                    }
             }
         }
 
