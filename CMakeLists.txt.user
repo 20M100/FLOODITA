@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.12.1, 2020-05-30T19:13:21. -->
+<!-- Written by QtCreator 4.12.1, 2020-06-01T02:38:40. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -200,7 +200,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Flood-It_A</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">CMakeProjectManager.CMakeRunConfiguration.Flood-It_A</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">Flood-It_A</value>
-    <value type="QString" key="RunConfiguration.Arguments">14 10 5 123 0 1</value>
+    <value type="QString" key="RunConfiguration.Arguments">50 20 5 10 0 1</value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
@@ -209,7 +209,7 @@
     <value type="bool" key="RunConfiguration.UseMultiProcess">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="bool" key="RunConfiguration.UseTerminal">false</value>
+    <value type="bool" key="RunConfiguration.UseTerminal">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/vincent/Projets/vraiflooditA/build-Flood-It_A-Desktop-Debug</value>
    </valuemap>
