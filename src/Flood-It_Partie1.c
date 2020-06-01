@@ -6,7 +6,7 @@
 #include "API_Gene_instance.h"
 #include "Entete_Fonctions.h"
 #include "Liste_case.h"
-
+#include "S_Zsg.h"
 
 int main(int argc, char **argv) {
 
@@ -67,7 +67,7 @@ int main(int argc, char **argv) {
     temps_initial = clock();
 
     if (exo == 0) {
-        printf("%d essais", sequence_aleatoire_imp(M, G, dim, nbcl, aff));
+        printf("%d essais\n", sequence_aleatoire_rec(M, G, dim, nbcl, aff));
     }
 
     temps_final = clock();
