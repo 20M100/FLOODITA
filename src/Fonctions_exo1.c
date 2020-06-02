@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include <stdio.h>
 #include "Entete_Fonctions.h"
 
 void trouve_zone_rec(int **M, int nbcase, int i, int j, int *taille, ListeCase *L){
@@ -27,35 +27,62 @@ void trouve_zone_rec(int **M, int nbcase, int i, int j, int *taille, ListeCase *
     }
 }
 
+void print_mat(int** M, int taille) {
+
+    for(int i = 0; i < taille; ++i) {
+        printf("-");
+    }
+    printf("\n");
+
+    for(int i = 0; i < taille; ++i) {
+        printf("|");
+        for(int j = 0; j < taille; ++j) {
+            if(M[i][j] == -1) {
+                printf("#");
+            } else {
+                printf("O");
+            }
+        }
+        printf("|\n");
+    }
+
+    for(int i = 0; i < taille; ++i) {
+        printf("-");
+    }
+    printf("\n");
+}
+
 void trouve_zone_imp(int **M, int nbcase, int i, int j, int *taille, ListeCase *L){
 
-    ListeCase *P = (ListeCase *) malloc(sizeof (ListeCase));
+    ListeCase *P = malloc(sizeof (ListeCase));
     *P = NULL;                                                           // On initialise un pointeur P vers une Liste vide qu'on appellera pile
-    int *a = NULL;
-    int *b = NULL;
+    int a = 0;
+    int b = 0;
     int tmp = M[i][j];                                                   // On affecte à tmp la valeur de la couleur de (i,j)
+    M[i][j] = -1;
 
     ajoute_en_tete(P, i, j);                                             // On empile (i,j)
 
-    while (test_liste_vide(P)!= 0){                                      /* Tant que la pile n'est pas vide, on enlève le haut de la pile,
-                                                                           on l'ajoute à L et on lui affecte la valeur -1, puis on ajoute
-                                                                           à la pile toute case existante adjacente à l'élément du haut
-                                                                           et de même couleur que (i,j) */
-        enleve_en_tete(P, a, b);
-        ajoute_en_tete(L, *a, *b);
+    while(test_liste_vide(P) != 1) {                                      /* Tant que la pile n'est pas vide, on enlève le haut de la pile,0.*/
+        enleve_en_tete(P, &a, &b);
+        ajoute_en_tete(L, a, b);
         *taille += 1;
-        M[*a][*b] = -1;
-        if (*b < nbcase -1 && tmp == M[*a][*b+1]){
-            ajoute_en_tete(P, *a, *b+1);
+        if (b < nbcase -1 && tmp == M[a][b+1]){
+            ajoute_en_tete(P, a, b+1);
+            M[a][b+1] = -1;
+
         }
-        if (*b > 0 && tmp == M[*a][*b-1]){
-            ajoute_en_tete(P, *a, *b-1);
+        if (b > 0 && tmp == M[a][b-1]){
+            ajoute_en_tete(P, a, b-1);
+            M[a][b-1] = -1;
         }
-        if (*a < nbcase -1 && tmp == M[*a+1][*b]){
-            ajoute_en_tete(P, *a+1, *b);
+        if (a < nbcase -1 && tmp == M[a+1][b]){
+            ajoute_en_tete(P, a+1, b);
+            M[a+1][b] = -1;
         }
-        if (*a > 0 && tmp == M[*a-1][*b]){
-            ajoute_en_tete(P, *a-1, *b);
+        if (a > 0 && tmp == M[a-1][b]){
+            ajoute_en_tete(P, a-1, b);
+            M[a-1][b] = -1;
         }
     }
 }
@@ -95,7 +122,7 @@ int sequence_aleatoire_rec(int **M, Grille *G, int dim, int nbcl, int aff){
             }
         }
 
-        if (aff == 2) {                                                  // On réaffiche la grille après modif. si demandé
+        if (aff == 1) {                                                  // On réaffiche la grille après modif. si demandé
             Grille_redessine_Grille(G);
             Grille_attente_touche(G);
         }
