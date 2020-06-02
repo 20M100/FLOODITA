@@ -111,7 +111,7 @@ int sequence_aleatoire_rec(int **M, Grille *G, int dim, int nbcl, int aff){
         if (c != tmp) {
             cpt++;                                                       // On augmente cpt si la nouvelle couleur est différente de celle de la Zsg
             while (it != NULL) {
-                Grille_attribue_couleur_case(G, it->i, it->j, c);        // On change la couleur des cases de la Zsg si nécessaire
+               if (aff == 1) Grille_attribue_couleur_case(G, it->i, it->j, c);        // On change la couleur des cases de la Zsg si nécessaire
                 M[it->i][it->j] = c;                                     // On met à jour la matrice de la grille
                 it = it->suiv;
             }
@@ -135,7 +135,7 @@ int sequence_aleatoire_rec(int **M, Grille *G, int dim, int nbcl, int aff){
 }
 
 
-int sequence_aleatoire_imp(int **M, Grille *G, int dim, int nbcl, int aff){
+int sequence_aleatoire_imp(int **M, Grille *G, int dim, int nbcl, int aff) {
 
     int cpt=0;                                                           // Nombre de changements de couleur (!= Zsg) nécessaires pour gagner
     int t = 0;                                                           // Taille de la Zsg
@@ -157,7 +157,7 @@ int sequence_aleatoire_imp(int **M, Grille *G, int dim, int nbcl, int aff){
         if (c != tmp) {
             cpt++;                                                       // On augmente cpt si la nouvelle couleur est différente de celle de la Zsg
             while (it != NULL) {
-                Grille_attribue_couleur_case(G, it->i, it->j, c);        // On change la couleur des cases de la Zsg si nécessaire
+                if (aff == 1) Grille_attribue_couleur_case(G, it->i, it->j, c);        // On change la couleur des cases de la Zsg si nécessaire
                 M[it->i][it->j] = c;                                     // On met à jour la matrice de la grille
                 it = it->suiv;
             }
