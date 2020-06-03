@@ -92,7 +92,7 @@ void cree_graphe_zone(int **M, int dim, Graphe_zone *GZ){
 
     for (i = 1; i < dim; i++){                                             // on indique les sommets voisins
 
-        for (j = 1; j < dim; j++){                                         // On parcourt la partie de la grille allant de (0,1) à (dim-1, dim-1)
+        for (j = 1; j < dim; j++){                                         // On parcourt la partie de la grille allant de (0,1) à (dim-2, dim-1)
 
 /* Pour chacune des cases parcourues, on compare les sommets de la case en question et de celle "au-dessus" ainsi que celle "à droite" */
 
@@ -104,14 +104,23 @@ void cree_graphe_zone(int **M, int dim, Graphe_zone *GZ){
             }
         }
     }
-/* Reste a comparer deux à deux les cases allant de (0,0) à (dim-1, 0) */
+/* Reste a comparer deux à deux les cases allant de (0,0) à (dim-1, 0) puis celles allant de (dim-1, 0) à (dim-1, dim-1) */
     for (i = 1; i < dim; i++){
 
         if (GZ->mat[i-1][0] != GZ->mat[i][0] && !adjacent(GZ->mat[i-1][0], GZ->mat[i][0])){
             ajoute_voisin(GZ->mat[i-1][0], GZ->mat[i][0]);
         }
     }
+
+    for (j = 1; j < dim; j++){
+
+        if (GZ->mat[dim-1][j-1] != GZ->mat[dim-1][j] && !adjacent(GZ->mat[dim-1][j-1], GZ->mat[dim-1][j])){
+            ajoute_voisin(GZ->mat[dim-1][j-1], GZ->mat[dim-1][j]);
+        }
+    }
 }
+
+
 
 void dessine_graphe(Graphe_zone *GZ, int dim){
     printf("Le graphe contient %d sommets\n", GZ->nbsom);

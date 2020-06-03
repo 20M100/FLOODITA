@@ -84,6 +84,7 @@ int main(int argc, char **argv) {
     temps_cpu = (temps_final - temps_initial) * 1e-6;
     printf("%f\n", temps_cpu);
 
+
     /* Desallocation de la matrice */
     for (i = 0; i < dim; i++) {
         if (M[i])
