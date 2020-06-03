@@ -35,13 +35,13 @@ void trouve_zone_imp(int **M, int nbcase, int i, int j, int *taille, ListeCase *
     int a = 0;
     int b = 0;
     int cl = M[i][j];                                                    // On affecte à cl la valeur de la couleur de (i,j)
-    M[i][j] = -1;
+    M[i][j] = -1;                                                        // (i,j) faisant forcément partie de la zone, on lui affecte -1
 
     ajoute_en_tete(P, i, j);                                             // On empile (i,j)
 
                                                                          /* Tant que la pile n'est pas vide, on enlève le haut de la pile,
                                                                           * on l'ajoute à L, on incrémente la taille de la zone de 1 puis
-                                                                          * pour chaque case existante adjacente à l'élément du haut de la pile
+                                                                          * pour chaque case existante adjacente à l'élément du haut de la pile,
                                                                           * si elle est de meme couleur que la zone, on l'empile et on passe
                                                                           * sa valeur à -1 pour éviter de l'empiler plusieurs fois. */
     while(test_liste_vide(P) != 1) {

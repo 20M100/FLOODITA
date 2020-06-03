@@ -104,25 +104,27 @@ int agrandit_Zsg(int **M, S_Zsg *Z, int cl, int k, int l) {
     return cmp;
 }
 
-int sequence_aleatoire_rapide(int **M, Grille *G, int dim, int nbcl){
+int sequence_aleatoire_rapide(int **M, int dim, int nbcl){
     S_Zsg Z;
-    init_Zsg(&Z, dim, nbcl);                                                        // On initie une structure Zsg appelée Z
+    init_Zsg(&Z, dim, nbcl);                                               // On initie une structure Zsg appelée Z
     int t = agrandit_Zsg(M, &Z, M[0][0], 0, 0);                            // On affecte à un entier t la taille de la Zsg au départ
     int cl;
     int cpt = 0;
     ListeCase it;
 
-    while (t < dim*dim){                                                            // Tant que la taille de la Zsg n'est pas celle de la grille, on change aléatoirement la couleur de la Zsg et on met la zone à jour
+    while (t < dim*dim){                                                   // Tant que la taille de la Zsg n'est pas celle de la grille,
+                                                                           //on change aléatoirement la couleur de la Zsg et on met la zone à jour
         cl=rand()%(nbcl);
         if (cl != M[0][0]) {
             cpt++;
-            it = Z.Lzsg;                                                            // On affecte à it la liste des cases de la Zsg
+            it = Z.Lzsg;                                                   // On affecte à it la liste des cases de la Zsg
             while (it != NULL) {
                 M[it->i][it->j] = cl;
                 it = it->suiv;
             }
             while (Z.B[cl] != NULL) {
-                t += agrandit_Zsg(M, &Z, cl, Z.B[cl]->i, Z.B[cl]->j);               // On met à jour la Zsg en y ajoutant la bordure de couleur cl et toutes les cases adjacentes de couleur cl
+                t += agrandit_Zsg(M, &Z, cl, Z.B[cl]->i, Z.B[cl]->j);      // On met à jour la Zsg en y ajoutant la bordure de couleur cl et toutes
+                                                                           //les cases de couleur cl adjacentes à la bordure en question
                 Z.B[cl] = Z.B[cl]->suiv;
             }
             detruit_liste(&(Z.B[cl]));

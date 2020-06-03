@@ -7,6 +7,7 @@
 #include "Entete_Fonctions.h"
 #include "Liste_case.h"
 #include "S_Zsg.h"
+#include "Fonctions_exo4.h"
 
 int main(int argc, char **argv) {
 
@@ -62,6 +63,10 @@ int main(int argc, char **argv) {
         Grille_redessine_Grille(G);
 
         Grille_attente_touche(G);
+
+        Grille_redessine_Grille(G);
+
+        Grille_attente_touche(G);
     }
 
     temps_initial = clock();
@@ -74,6 +79,11 @@ int main(int argc, char **argv) {
     temps_cpu = (temps_final - temps_initial) * 1e-6;
     printf("%f\n", temps_cpu);
 
+    if (exo == 1){
+        Graphe_zone *GZ = malloc(sizeof(Graphe_zone));
+        cree_graphe_zone(M, dim, GZ);
+        dessine_graphe(GZ, dim);
+    }
 
     /* Desallocation de la matrice */
     for (i = 0; i < dim; i++) {

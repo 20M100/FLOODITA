@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Flood-It_A"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Flood-It_A">
+				<Option output="/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Flood-It_A" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/vincent/Projets/vraiflooditA/Flood-It_A/./src"/>
+					<Add directory="/usr/include/SDL2"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Makefile&quot;  VERBOSE=1 Flood-It_A"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Flood-It_A/fast">
+				<Option output="/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Flood-It_A" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/vincent/Projets/vraiflooditA/Flood-It_A/./src"/>
+					<Add directory="/usr/include/SDL2"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Makefile&quot;  VERBOSE=1 Flood-It_A/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/vincent/Projets/vraiflooditA/Flood-It_A/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/vincent/Projets/vraiflooditA/Flood-It_A/src/API_Gene_instance.c">
+			<Option target="Flood-It_A"/>
+		</Unit>
+		<Unit filename="/home/vincent/Projets/vraiflooditA/Flood-It_A/src/API_Gene_instance.h">
+			<Option target="Flood-It_A"/>
+		</Unit>
+		<Unit filename="/home/vincent/Projets/vraiflooditA/Flood-It_A/src/API_Grille.c">
+			<Option target="Flood-It_A"/>
+		</Unit>
+		<Unit filename="/home/vincent/Projets/vraiflooditA/Flood-It_A/src/API_Grille.h">
+			<Option target="Flood-It_A"/>
+		</Unit>
+		<Unit filename="/home/vincent/Projets/vraiflooditA/Flood-It_A/src/Entete_Fonctions.h">
+			<Option target="Flood-It_A"/>
+		</Unit>
+		<Unit filename="/home/vincent/Projets/vraiflooditA/Flood-It_A/src/Flood-It_Partie1.c">
+			<Option target="Flood-It_A"/>
+		</Unit>
+		<Unit filename="/home/vincent/Projets/vraiflooditA/Flood-It_A/src/Fonctions_exo1.c">
+			<Option target="Flood-It_A"/>
+		</Unit>
+		<Unit filename="/home/vincent/Projets/vraiflooditA/Flood-It_A/src/Fonctions_exo4.c">
+			<Option target="Flood-It_A"/>
+		</Unit>
+		<Unit filename="/home/vincent/Projets/vraiflooditA/Flood-It_A/src/Fonctions_exo4.h">
+			<Option target="Flood-It_A"/>
+		</Unit>
+		<Unit filename="/home/vincent/Projets/vraiflooditA/Flood-It_A/src/Liste_case.c">
+			<Option target="Flood-It_A"/>
+		</Unit>
+		<Unit filename="/home/vincent/Projets/vraiflooditA/Flood-It_A/src/Liste_case.h">
+			<Option target="Flood-It_A"/>
+		</Unit>
+		<Unit filename="/home/vincent/Projets/vraiflooditA/Flood-It_A/src/S_Zsg.c">
+			<Option target="Flood-It_A"/>
+		</Unit>
+		<Unit filename="/home/vincent/Projets/vraiflooditA/Flood-It_A/src/S_Zsg.h">
+			<Option target="Flood-It_A"/>
+		</Unit>
+		<Unit filename="/home/vincent/Projets/vraiflooditA/Flood-It_A/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

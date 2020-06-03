@@ -34,6 +34,6 @@ int appartient_Bordure(S_Zsg *zone, int i, int j, int cl);
 int agrandit_Zsg(int **M, S_Zsg *Z, int cl, int k, int l);
 
 /* Algorithme tirant au sort une couleur: il utilise la fonction agrandit_Zsg pour determiner la Zsg */
-int sequence_aleatoire_rapide(int **M, Grille *G, int dim, int nbcl);
+int sequence_aleatoire_rapide(int **M, int dim, int nbcl);
 
 #endif //S_ZSG_H
