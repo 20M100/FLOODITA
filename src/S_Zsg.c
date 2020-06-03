@@ -54,49 +54,49 @@ int agrandit_Zsg(int **M, S_Zsg *Z, int cl, int k, int l) {
 
     ajoute_en_tete(P, k, l);                                             // On empile (i,j)
 
-    while (test_liste_vide(P) != 1){                                      /* Tant que la pile n'est pas vide, on enlève le haut de la pile,
-                                                                           on l'ajoute à L et on lui affecte la valeur -1, puis on ajoute
-                                                                           à la pile toute case existante adjacente à l'élément du haut
-                                                                           et de même couleur que (i,j) */
+    while (test_liste_vide(P) != 1){                                      /* Tant que la pile n'est pas vide, on enlève le haut de la pile, on l'ajoute à L
+                                                                           et on lui affecte la valeur -1, puis pour toute case existante adjacente à l'élément
+                                                                           du haut : si elle est de meme couleur que (i,j), on l'ajoute à la pile si ça n'a pas déjà été fait.
+                                                                           Sinon, si elle n'appartient pas encore à la bordure, on l'ajoute. */
         enleve_en_tete(P, &a, &b);
-        if (Z->App[a][b] != -1) ajoute_Lzsg(Z, a, b);
+        if (!appartient_Zsg(Z, a, b)) ajoute_Lzsg(Z, a, b);
         cmp++;
-        if (b < Z->dim -1 && cl == M[a][b+1] && Z->App[a][b+1] != -1){
+        if (b < Z->dim -1 && cl == M[a][b+1] && !appartient_Zsg(Z, a, b+1)){
 
             ajoute_en_tete(P, a, b+1);
             Z->App[a][b+1] = -1;
 
-        } else if (b < Z->dim -1 && Z->App[a][b+1] != M[a][b+1] && Z->App[a][b+1] != -1){
+        } else if (b < Z->dim -1 && !appartient_Bordure(Z, a, b+1, M[a][b+1]) && !appartient_Zsg(Z, a, b+1)){
 
             ajoute_bordure(Z, a, b+1, M[a][b+1]);
         }
 
-        if (b > 0 && cl == M[a][b-1] && Z->App[a][b-1] != -1){
+        if (b > 0 && cl == M[a][b-1] && !appartient_Zsg(Z, a, b-1)){
 
             ajoute_en_tete(P, a, b-1);
             Z->App[a][b-1] = -1;
 
-        } else if (b > 0 && Z->App[a][b-1] != M[a][b-1] && Z->App[a][b-1] != -1){
+        } else if (b > 0 && !appartient_Bordure(Z, a, b-1, M[a][b-1]) && !appartient_Zsg(Z, a, b-1)){
 
             ajoute_bordure(Z, a, b-1, M[a][b-1]);
         }
 
-        if (a < Z->dim -1 && cl == M[a+1][b] && Z->App[a+1][b] != -1){
+        if (a < Z->dim -1 && cl == M[a+1][b] && !appartient_Zsg(Z, a+1, b)){
 
             ajoute_en_tete(P, a+1, b);
             Z->App[a+1][b] = -1;
 
-        } else if (a < Z->dim -1 && Z->App[a+1][b] != M[a+1][b] && Z->App[a+1][b] != -1){
+        } else if (a < Z->dim -1 && !appartient_Bordure(Z, a+1, b, M[a+1][b]) && !appartient_Zsg(Z, a+1, b)){
 
             ajoute_bordure(Z, a+1, b, M[a+1][b]);
         }
 
-        if (a > 0 && cl == M[a-1][b] && Z->App[a-1][b] != -1){
+        if (a > 0 && cl == M[a-1][b] && !appartient_Zsg(Z, a-1, b)){
 
             ajoute_en_tete(P, a-1, b);
             Z->App[a-1][b] = -1;
 
-        } else if (a > 0 && Z->App[a-1][b] != M[a-1][b] && Z->App[a-1][b] != -1){
+        } else if (a > 0 && !appartient_Bordure(Z, a-1, b, M[a-1][b]) && !appartient_Zsg(Z, a-1, b)){
 
             ajoute_bordure(Z, a-1, b, M[a-1][b]);
         }
@@ -106,23 +106,23 @@ int agrandit_Zsg(int **M, S_Zsg *Z, int cl, int k, int l) {
 
 int sequence_aleatoire_rapide(int **M, Grille *G, int dim, int nbcl){
     S_Zsg Z;
-    init_Zsg(&Z, dim, nbcl);
-    int t = agrandit_Zsg(M, &Z, M[0][0], 0, 0);
+    init_Zsg(&Z, dim, nbcl);                                                        // On initie une structure Zsg appelée Z
+    int t = agrandit_Zsg(M, &Z, M[0][0], 0, 0);                            // On affecte à un entier t la taille de la Zsg au départ
     int cl;
     int cpt = 0;
     ListeCase it;
 
-    while (t < dim*dim){
+    while (t < dim*dim){                                                            // Tant que la taille de la Zsg n'est pas celle de la grille, on change aléatoirement la couleur de la Zsg et on met la zone à jour
         cl=rand()%(nbcl);
         if (cl != M[0][0]) {
             cpt++;
-            it = Z.Lzsg;
+            it = Z.Lzsg;                                                            // On affecte à it la liste des cases de la Zsg
             while (it != NULL) {
                 M[it->i][it->j] = cl;
                 it = it->suiv;
             }
             while (Z.B[cl] != NULL) {
-                t += agrandit_Zsg(M, &Z, cl, Z.B[cl]->i, Z.B[cl]->j);
+                t += agrandit_Zsg(M, &Z, cl, Z.B[cl]->i, Z.B[cl]->j);               // On met à jour la Zsg en y ajoutant la bordure de couleur cl et toutes les cases adjacentes de couleur cl
                 Z.B[cl] = Z.B[cl]->suiv;
             }
             detruit_liste(&(Z.B[cl]));

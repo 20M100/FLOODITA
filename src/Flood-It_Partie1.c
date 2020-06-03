@@ -67,7 +67,7 @@ int main(int argc, char **argv) {
     temps_initial = clock();
 
     if (exo == 0) {
-        printf("%d essais\n", sequence_aleatoire_rapide(M, G, dim, nbcl));
+        printf("%d essais\n", sequence_aleatoire_rec(M, G, dim, nbcl, aff));
     }
 
     temps_final = clock();
