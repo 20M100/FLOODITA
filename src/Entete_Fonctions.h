@@ -8,6 +8,7 @@
    et met -1 dans ces cases */
 void trouve_zone_rec(int **M, int nbcase, int i, int j, int *taille, ListeCase *L);
 
+
 /* Version dérécursifiée */
 void trouve_zone_imp(int **M, int nbcase, int i, int j, int *taille, ListeCase *L);
 

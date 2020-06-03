@@ -30,7 +30,7 @@ typedef struct graphe_zone{
 
 
 /* Ajoute un pointeur sur Sommet a une liste chainee de Cellule_som passée en paramètre */
-void ajoute_liste_sommet(Sommet *S, Cellule_som *L);
+void ajoute_liste_sommet(Sommet *S, Cellule_som **L);
 
 
 /* Détruit une liste chainée de Cellule_som sans détruire les sommets pointés par cette liste */

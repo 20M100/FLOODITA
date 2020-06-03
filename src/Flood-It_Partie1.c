@@ -75,15 +75,14 @@ int main(int argc, char **argv) {
         printf("%d essais\n", sequence_aleatoire_rec(M, G, dim, nbcl, aff));
     }
 
-    temps_final = clock();
-    temps_cpu = (temps_final - temps_initial) * 1e-6;
-    printf("%f\n", temps_cpu);
-
     if (exo == 1){
         Graphe_zone *GZ = malloc(sizeof(Graphe_zone));
         cree_graphe_zone(M, dim, GZ);
         dessine_graphe(GZ, dim);
     }
+    temps_final = clock();
+    temps_cpu = (temps_final - temps_initial) * 1e-6;
+    printf("%f\n", temps_cpu);
 
     /* Desallocation de la matrice */
     for (i = 0; i < dim; i++) {

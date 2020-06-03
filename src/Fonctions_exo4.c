@@ -2,11 +2,11 @@
 #include "Fonctions_exo4.h"
 #include "Entete_Fonctions.h"
 
-void ajoute_liste_sommet(Sommet *S, Cellule_som *L){
+void ajoute_liste_sommet(Sommet *S, Cellule_som **L){
     Cellule_som *C = malloc(sizeof (Cellule_som));
     C->sommet = S;
-    C->suiv = L;
-    L = C;
+    C->suiv = *L;
+    *L = C;
 }
 
 
@@ -21,8 +21,8 @@ void detruit_liste_sommet(Cellule_som *L){
 
 
 void ajoute_voisin(Sommet *s1, Sommet *s2){
-    ajoute_liste_sommet(s2, s1->sommet_adj);
-    ajoute_liste_sommet(s1, s2->sommet_adj);
+    ajoute_liste_sommet(s2, &(s1->sommet_adj));
+    ajoute_liste_sommet(s1, &(s2->sommet_adj));
 }
 
 
@@ -30,7 +30,7 @@ int adjacent(Sommet *s1, Sommet *s2){
     int i = 0;
     Cellule_som *cour = s1->sommet_adj;
     while (cour != NULL){
-        if (cour->sommet == s2) i = 1;
+        if (cour->sommet->num == s2->num) i = 1;
         cour = cour->suiv;
     }
     return (i == 1);
@@ -38,12 +38,13 @@ int adjacent(Sommet *s1, Sommet *s2){
 
 
 void cree_graphe_zone(int **M, int dim, Graphe_zone *GZ){
+    int i, j;
     GZ->nbsom = 0;                                                           // L41-51 : on initie GZ avec 0 sommet
     GZ->som = NULL;
-    int i, j;
+    GZ->mat = malloc(dim * sizeof(Sommet**));
 
     for (i = 0; i < dim; i++){
-
+        GZ->mat[i] = malloc(dim * sizeof(Sommet*));
         for (j = 0; j < dim; j++){
 
             GZ->mat[i][j] = NULL;
@@ -72,17 +73,18 @@ void cree_graphe_zone(int **M, int dim, Graphe_zone *GZ){
                 t = 0;                                                      // On initie sa taille à 0
                 trouve_zone_rec(M2, dim, i, j, &t, &L);                      // On détermine la liste des cases de sa zone ainsi que sa taille
 
-                S->num = num;                                               // On lui affecte les valeurs (sauf la liste de ses voisins)
-                S->cl = M[i][j];
-                S->nbcase_som = t;
-                S->cases = L;
+                    S->num = num;                                               // On lui affecte les valeurs (sauf la liste de ses voisins)
+                    S->cl = M[i][j];
+                    S->nbcase_som = t;
+                    S->cases = L;
+                    S->sommet_adj = NULL;
 
-                ajoute_liste_sommet(S, GZ->som);                             // On ajoute le sommet à la liste du graphe
-                GZ->nbsom++;                                                 // Le nombre de sommets augmente donc de 1
-                while (L != NULL){                                          // On met à jour mat tout en détruisant L pour la prochaine itération
-                    GZ->mat[L->i][L->j] = S;
-                    L = L->suiv;
-                }
+                    ajoute_liste_sommet(S, &GZ->som);                             // On ajoute le sommet à la liste du graphe
+                    GZ->nbsom++;                                                 // Le nombre de sommets augmente donc de 1
+                    while (L != NULL) {                                          // On met à jour mat tout en détruisant L pour la prochaine itération
+                        GZ->mat[L->i][L->j] = S;
+                        L = L->suiv;
+                    }
                 num++;                                                      // On incrémente num de 1 pour la prochaine itération
             }
         }
@@ -90,7 +92,7 @@ void cree_graphe_zone(int **M, int dim, Graphe_zone *GZ){
 
     for (i = 1; i < dim; i++){                                             // on indique les sommets voisins
 
-        for (j = 1; j < dim; j++){                                         // On parcourt la partie de la grille allant de (1,1) à (dim-1, dim-1)
+        for (j = 1; j < dim; j++){                                         // On parcourt la partie de la grille allant de (0,1) à (dim-1, dim-1)
 
 /* Pour chacune des cases parcourues, on compare les sommets de la case en question et de celle "au-dessus" ainsi que celle "à droite" */
 
@@ -113,9 +115,7 @@ void cree_graphe_zone(int **M, int dim, Graphe_zone *GZ){
 
 void dessine_graphe(Graphe_zone *GZ, int dim){
     printf("Le graphe contient %d sommets\n", GZ->nbsom);
-    Cellule_som *cour = GZ->som;
-
-    while (cour != NULL){
+    for(Cellule_som *cour= GZ->som; cour != NULL; cour = cour->suiv) {
         Sommet *som = cour->sommet;
 
         printf("Sommet numero %d\n", som->num);
@@ -138,7 +138,6 @@ void dessine_graphe(Graphe_zone *GZ, int dim){
             adj = adj->suiv;
         }
         puts("\n");
-        cour = cour->suiv;
     }
 }
 

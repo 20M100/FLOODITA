@@ -18,34 +18,18 @@ API_Grille.h
 Liste_case.h
 /home/vincent/Projets/vraiflooditA/Flood-It_A/src/Liste_case.h
 
-/home/vincent/Projets/vraiflooditA/Flood-It_A/src/Fonctions_exo1.c
-stdio.h
--
-Entete_Fonctions.h
-/home/vincent/Projets/vraiflooditA/Flood-It_A/src/Entete_Fonctions.h
-
 /home/vincent/Projets/vraiflooditA/Flood-It_A/src/Fonctions_exo4.c
 stdlib.h
 -
 Fonctions_exo4.h
 /home/vincent/Projets/vraiflooditA/Flood-It_A/src/Fonctions_exo4.h
+Entete_Fonctions.h
+/home/vincent/Projets/vraiflooditA/Flood-It_A/src/Entete_Fonctions.h
 
 /home/vincent/Projets/vraiflooditA/Flood-It_A/src/Fonctions_exo4.h
 Liste_case.h
 /home/vincent/Projets/vraiflooditA/Flood-It_A/src/Liste_case.h
 
-/home/vincent/Projets/vraiflooditA/Flood-It_A/src/Liste_case.h
-
-/home/vincent/Projets/vraiflooditA/Flood-It_A/src/S_Zsg.c
-stdlib.h
--
-S_Zsg.h
-/home/vincent/Projets/vraiflooditA/Flood-It_A/src/S_Zsg.h
-
-/home/vincent/Projets/vraiflooditA/Flood-It_A/src/S_Zsg.h
-API_Grille.h
-/home/vincent/Projets/vraiflooditA/Flood-It_A/src/API_Grille.h
-Liste_case.h
 /home/vincent/Projets/vraiflooditA/Flood-It_A/src/Liste_case.h
 
 /usr/include/SDL2/SDL.h
