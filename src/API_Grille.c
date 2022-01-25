@@ -1,5 +1,7 @@
 #include "API_Grille.h"
 
+//YES
+
 void Grille_init(int dim, int nbcl, int taille_pixel, Grille **G) {
     int i;
     unsigned int genecl = 10101;
